@@ -1,6 +1,6 @@
-# [Project name]
+# Arbaz AI
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+Arbaz AI is a cross-platform conversational assistant for coding, math, science, writing, and technical questions in English, Hindi, and Hinglish.
 
 ## Run & Operate
 
@@ -9,7 +9,7 @@ _Replace the heading above with the project's name, and this line with one sente
 - `pnpm run build` — typecheck + build all packages
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
 - `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+- Required secret for live Gemini chat: `GEMINI_API_KEY`
 
 ## Stack
 
@@ -22,23 +22,29 @@ _Replace the heading above with the project's name, and this line with one sente
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/arbaz-ai/app/index.tsx` — primary chat experience
+- `artifacts/arbaz-ai/lib/chat.ts` — streaming client, local identity replies, and safe command simulations
+- `artifacts/api-server/src/routes/gemini.ts` — validated, rate-limited Gemini streaming endpoint
+- `lib/api-spec/openapi.yaml` — API contract source of truth
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- Gemini credentials remain on the API server; never place them in Expo client configuration.
+- Chat history is stored locally on the device; no account or server-side conversation storage is used.
+- Device commands are simulated with safety guidance; the app does not execute operating-system actions.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+The app supports streamed Gemini chat, local chat history, formatted and copyable code, text-to-speech playback, and browser speech recognition where available.
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+The user requested a dark, futuristic interface with blue and purple accents and a visible “Created by Arbaz Khan” badge.
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- Add a rotated `GEMINI_API_KEY` through Replit Secrets before expecting live Gemini responses.
+- Browser speech recognition is only available in browsers that implement the Web Speech API; native clients show an explanatory fallback.
 
 ## Pointers
 

@@ -1,0 +1,28 @@
+{
+  "expo": {
+    "name": "Arbaz AI",
+    "slug": "arbaz-ai",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/generated-icon.png",
+    "scheme": "arbaz-ai",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "backgroundColor": "#080A12",
+      "image": "./assets/images/generated-icon.png",
+      "resizeMode": "contain"
+    },
+    "ios": {
+      "supportsTablet": false
+    },
+    "android": {},
+    "web": {
+      "favicon": "./assets/images/generated-icon.png"
+    },
+    "plugins": ["expo-router"],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}
