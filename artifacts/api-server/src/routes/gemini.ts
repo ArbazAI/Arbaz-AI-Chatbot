@@ -99,7 +99,7 @@ router.post("/gemini/chat", async (req, res) => {
   try {
     const ai = new GoogleGenAI({ apiKey });
     const stream = await ai.models.generateContentStream({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.8-flash",
       contents: rawMessages.map((message) => ({
         role: message.role === "assistant" ? "model" : "user",
         parts: [{ text: message.content }],
